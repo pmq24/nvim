@@ -4,7 +4,9 @@ local LANGUAGE_SERVERS = {
 	"dockerls",
 	"lua_ls",
 	"ruby_ls",
-	"solargraph",
+	"rubocop",
+	"tsserver",
+	"yamlls",
 }
 
 local M = {
@@ -28,15 +30,15 @@ function M.config()
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	for _, server in ipairs(LANGUAGE_SERVERS) do
-		lsp[server].setup({ capabilities = capabilities })
+		lsp[server].setup({
+			capabilities = capabilities,
+			handlers = {
+				["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+					virtual_text = false,
+				}),
+			},
+		})
 	end
-
-	vim.api.nvim_create_autocmd("BufWritePre", {
-		pattern = "*",
-		callback = function()
-			vim.lsp.buf.format()
-		end
-	})
 end
 
 return M

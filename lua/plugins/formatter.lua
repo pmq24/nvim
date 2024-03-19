@@ -2,11 +2,10 @@ local M = {
 	"mhartington/formatter.nvim",
 	cmd = {
 		"Format",
-		"FormatWrite",
 		"FormatLock",
+		"FormatWrite",
 		"FormatWriteLock",
 	},
-	enabled = false,
 }
 
 function M.config()
@@ -14,10 +13,31 @@ function M.config()
 		filetype = {
 			lua = {
 				require("formatter.filetypes.lua").stylua,
+			},
+			ruby = {
 				require("formatter.filetypes.ruby").rubocop,
+				function()
+					return {
+						"--auto-correct",
+					}
+				end,
+			},
+			typescript = {
+				require("formatter.filetypes.typescript").prettierd,
+			},
+			typescriptreact = {
+				require("formatter.filetypes.typescriptreact").prettierd,
+			},
+			yaml = {
+				require("formatter.filetypes.yaml").prettierd,
 			},
 		},
 		logging = true,
+	})
+
+	vim.api.nvim_create_autocmd("BufWritePost", {
+		pattern = "*",
+		command = ":FormatWrite",
 	})
 end
 

@@ -18,17 +18,27 @@ local KEY_MAPPINGS = {
 		"Save",
 	},
 	["<leader>"] = {
+		W = {
+			function()
+				require("telescope").extensions.live_grep_args.live_grep_args()
+			end,
+			"󱎸 Find Words (Advanced)",
+		},
+		d = {
+			"<cmd>Trouble<CR>",
+			"󰓙 Diagnostics",
+		},
 		f = {
 			"<cmd>Telescope find_files<CR>",
-			"Find Files",
+			"󰱼 Find Files",
 		},
 		q = {
-			"<cmd>wq<CR>",
-			"Quit Current Buffer",
+			"<cmd>q<CR>",
+			"󰅖 Quit Current Buffer",
 		},
 		w = {
 			"<cmd>Telescope live_grep<CR>",
-			"Find Words (Live Grep)",
+			"󱎸 Find Words",
 		},
 	},
 	F = {

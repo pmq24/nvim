@@ -15,6 +15,7 @@ local M = {
 			"html-lsp",
 			"lua-language-server",
 			"prettier",
+			"prettierd",
 			"solargraph",
 			"sorbet",
 			"standardrb",
