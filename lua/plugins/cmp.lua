@@ -21,6 +21,10 @@ function M.config()
 			["<A-l>"] = function(fallback)
 				if cmp.visible() and cmp.get_selected_entry() == nil then
 					cmp.select_next_item()
+
+					if #(cmp.get_entries()) == 1 then
+						cmp.confirm()
+					end
 				else
 					fallback()
 				end

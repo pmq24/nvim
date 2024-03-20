@@ -4,10 +4,7 @@ local M = {
 		"hrsh7th/nvim-cmp",
 	},
 	ft = { "lua" },
+	opts = {}
 }
-
-function M.enabled()
-	return string.find(vim.loop.cwd(), ".config/nvim")
-end
 
 return M

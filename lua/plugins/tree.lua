@@ -15,6 +15,7 @@ local M = {
 			width = 50,
 		},
 		renderer = {
+			highlight_opened_files = "all",
 			indent_markers = {
 				enable = true,
 			},

@@ -17,28 +17,46 @@ local KEY_MAPPINGS = {
 		end,
 		"Save",
 	},
+	["<Esc>"] = {
+		"<cmd>noh<CR>",
+		"Clear highlights",
+	},
 	["<leader>"] = {
-		W = {
-			function()
-				require("telescope").extensions.live_grep_args.live_grep_args()
-			end,
-			"󱎸 Find Words (Advanced)",
-		},
-		d = {
-			"<cmd>Trouble<CR>",
-			"󰓙 Diagnostics",
-		},
 		f = {
-			"<cmd>Telescope find_files<CR>",
-			"󰱼 Find Files",
+			name = "󰍉 Find...",
+			a = {
+				"<cmd>Telescope buffers<CR>",
+				"󱀺 Active buffers",
+			},
+			f = {
+				"<cmd>Telescope find_files<CR>",
+				"󰈔 Files",
+			},
+			w = {
+				function()
+					require("telescope").extensions.live_grep_args.live_grep_args()
+				end,
+				"󰇧 Words",
+			},
+		},
+		g = {
+			name = "󰜎 Go to...",
+			d = {
+				function()
+					vim.lsp.buf.definition()
+				end,
+				" Definition",
+			},
+			r = {
+				function()
+					vim.lsp.buf.references()
+				end,
+				" References",
+			},
 		},
 		q = {
 			"<cmd>q<CR>",
 			"󰅖 Quit Current Buffer",
-		},
-		w = {
-			"<cmd>Telescope live_grep<CR>",
-			"󱎸 Find Words",
 		},
 	},
 	F = {
@@ -54,6 +72,12 @@ local KEY_MAPPINGS = {
 	f = {
 		"<Plug>(leap-forward)",
 		"Leap forward",
+	},
+	m = {
+		function()
+			vim.lsp.buf.code_action()
+		end,
+		"Code action",
 	},
 }
 

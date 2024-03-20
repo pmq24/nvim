@@ -19,6 +19,7 @@ local M = {
 		"LspStop",
 	},
 	dependencies = {
+		"folke/neodev.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"nvim-treesitter/nvim-treesitter",
 	},
@@ -32,13 +33,18 @@ function M.config()
 	for _, server in ipairs(LANGUAGE_SERVERS) do
 		lsp[server].setup({
 			capabilities = capabilities,
-			handlers = {
-				["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-					virtual_text = false,
-				}),
-			},
 		})
 	end
+
+	lsp.lua_ls.setup({
+		settings = {
+			Lua = {
+				completion = {
+					callSnippet = "Replace"
+				}
+			}
+		}
+	})
 end
 
 return M

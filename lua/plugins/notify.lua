@@ -1,14 +1,16 @@
 local M = {
 	"rcarriga/nvim-notify",
 	lazy = false,
-}
-
-function M.config(plugin_spec, opts)
-	require("notify").setup({
+	main = "notify",
+	opts = {
 		max_width = 100,
 		render = "wrapped-compact",
 		top_down = false,
-	})
+	}
+}
+
+function M.config(plugin_spec, opts)
+	require(plugin_spec.main).setup(opts)
 	vim.notify = require("notify")
 end
 
