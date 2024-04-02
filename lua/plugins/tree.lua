@@ -20,6 +20,9 @@ local M = {
 				enable = true,
 			},
 		},
+		update_focused_file = {
+			enable = true,
+		}
 	},
 }
 

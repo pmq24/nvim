@@ -14,7 +14,6 @@ local M = {
 			"json-lsp",
 			"html-lsp",
 			"lua-language-server",
-			"prettier",
 			"prettierd",
 			"solargraph",
 			"sorbet",

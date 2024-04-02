@@ -6,10 +6,11 @@ local M = {
 		"FormatWrite",
 		"FormatWriteLock",
 	},
+	main = "formatter",
 }
 
-function M.config()
-	require("formatter").setup({
+function M.config(spec, _)
+	require(spec.main).setup({
 		filetype = {
 			lua = {
 				require("formatter.filetypes.lua").stylua,
@@ -36,8 +37,8 @@ function M.config()
 	})
 
 	vim.api.nvim_create_autocmd("BufWritePost", {
+		command = ":FormatWriteLock",
 		pattern = "*",
-		command = ":FormatWrite",
 	})
 end
 

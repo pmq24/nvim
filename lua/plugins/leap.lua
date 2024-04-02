@@ -5,7 +5,9 @@ local M = {
 	},
 	lazy = false,
 	main = "leap",
-	opts = {}
+	opts = {
+		highlight_unlabeled_phase_one_targets = true
+	}
 }
 
 return M

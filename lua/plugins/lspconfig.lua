@@ -3,8 +3,8 @@
 local LANGUAGE_SERVERS = {
 	"dockerls",
 	"lua_ls",
-	"ruby_ls",
 	"rubocop",
+	"solargraph",
 	"tsserver",
 	"yamlls",
 }

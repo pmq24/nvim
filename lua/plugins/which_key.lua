@@ -55,7 +55,10 @@ local KEY_MAPPINGS = {
 			},
 		},
 		q = {
-			"<cmd>q<CR>",
+			function()
+				vim.cmd("write")
+				vim.cmd("bdelete")
+			end,
 			"󰅖 Quit Current Buffer",
 		},
 	},
@@ -75,7 +78,7 @@ local KEY_MAPPINGS = {
 	},
 	m = {
 		function()
-			vim.lsp.buf.code_action()
+			require("actions-preview").code_actions()
 		end,
 		"Code action",
 	},
