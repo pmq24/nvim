@@ -2,7 +2,11 @@ local M = {
 	"dgagn/diagflow.nvim",
 	event = { "BufReadPost" },
 	opts = {
-		padding_top = 4,
+		max_width = 30,
+		padding_top = 5,
+		padding_right = 2,
+		placement = "top",
+		scope = "line",
 		show_signs = true,
 	},
 }

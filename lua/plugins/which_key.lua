@@ -1,4 +1,8 @@
 local KEY_MAPPINGS = {
+	["<A-C-S-q>"] = {
+		"<cmd>wqa!<CR>",
+		"Save all files and quit Neovim",
+	},
 	["<C-n>"] = {
 		function()
 			local nvimtree_api = require("nvim-tree.api").tree
@@ -21,45 +25,68 @@ local KEY_MAPPINGS = {
 		"<cmd>noh<CR>",
 		"Clear highlights",
 	},
-	["<leader>"] = {
+	t = {
+		name = "  Telescope",
+		b = {
+			"<cmd>Telescope buffers<CR>",
+			"󱁻  Buffers",
+		},
+		c = {
+			function()
+				require("telescope.builtin").colorscheme()
+			end,
+			"  Colorschemes",
+		},
+		d = {
+			"<cmd>Telescope lsp_definitions<CR>",
+			"Definitions",
+		},
 		f = {
-			name = "󰍉 Find...",
-			a = {
-				"<cmd>Telescope buffers<CR>",
-				"󱀺 Active buffers",
-			},
-			f = {
-				"<cmd>Telescope find_files<CR>",
-				"󰈔 Files",
-			},
-			w = {
-				function()
-					require("telescope").extensions.live_grep_args.live_grep_args()
-				end,
-				"󰇧 Words",
-			},
+			"<cmd>Telescope find_files<CR>",
+			"󰈔  Files",
+		},
+		r = {
+			"<cmd>Telescope lsp_references<CR>",
+			"References",
+		},
+		w = {
+			function()
+				require("telescope").extensions.live_grep_args.live_grep_args()
+			end,
+			"󰬴  Words",
+		},
+	},
+	["<leader>"] = {
+		d = {
+			function()
+				vim.diagnostic.setloclist()
+			end,
+			" Diagnostics",
 		},
 		g = {
-			name = "󰜎 Go to...",
-			d = {
-				function()
-					vim.lsp.buf.definition()
-				end,
-				" Definition",
-			},
-			r = {
-				function()
-					vim.lsp.buf.references()
-				end,
-				" References",
+			name = "Git",
+			b = {
+				"<cmd>Gitsign blame_line<CR>",
+				"Blame line",
 			},
 		},
 		q = {
 			function()
-				vim.cmd("write")
+				local current_buffer_is_a_file = vim.bo.buftype == ""
+
+				if current_buffer_is_a_file then
+					vim.cmd("write")
+				end
 				vim.cmd("bdelete")
 			end,
-			"󰅖 Quit Current Buffer",
+			"󰅖 Quit the current buffer",
+		},
+		v = {
+			name = "Open view...",
+			g = {
+				"<cmd>LazyGit<cr>",
+				"Git (LazyGit)",
+			},
 		},
 	},
 	F = {
@@ -87,17 +114,18 @@ local KEY_MAPPINGS = {
 local M = {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
+	main = "which-key",
 	opts = {
 		icons = {
-			breadcrumb = "",
-			group = " ",
+			breadcrumb = "",
+			group = " ",
 			separator = "",
 		},
 	},
 }
 
-function M.config(_, opts)
-	local wk = require("which-key")
+function M.config(spec, opts)
+	local wk = require(spec.main)
 	wk.setup(opts)
 	wk.register(KEY_MAPPINGS)
 end

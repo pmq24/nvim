@@ -7,7 +7,7 @@ local M = {
 	main = "treesitter-context",
 	opts = {
 		max_lines = 3,
-		separator = " ",
+		separator = ".",
 	},
 }
 

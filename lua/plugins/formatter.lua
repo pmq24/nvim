@@ -37,7 +37,7 @@ function M.config(spec, _)
 	})
 
 	vim.api.nvim_create_autocmd("BufWritePost", {
-		command = ":FormatWriteLock",
+		command = ":FormatWrite",
 		pattern = "*",
 	})
 end

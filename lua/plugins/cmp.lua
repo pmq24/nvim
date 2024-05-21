@@ -69,6 +69,8 @@ function M.config()
 			end,
 		},
 		sources = cmp.config.sources({
+			{ name = "codeium" },
+		}, {
 			{ name = "nvim_lsp" },
 		}, {
 			{ name = "buffer" },

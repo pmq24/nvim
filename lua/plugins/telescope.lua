@@ -12,30 +12,38 @@ local M = {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	main = "telescope",
-}
-
-function M.config(spec, _)
-	local telescope = require(spec.main)
-	telescope.setup({
-		defaults = {
-			layout_strategy = "vertical",
-		},
-		extensions = {
-			fzf = {
-				fuzzy = true,
-				override_generic_sorter = true,
-				override_file_sorter = true,
-				case_mode = "smart_case",
+	opts = function()
+		return {
+			defaults = {
+				file_ignore_patterns = {
+					"node_modules",
+				},
+				layout_strategy = "vertical",
+				prompt_prefix = "󰌌 ",
+				selection_caret = " "
 			},
-			live_grep_args = {
-				mappings = {
-					i = {
-						["<C-a>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+			extensions = {
+				fzf = {
+					fuzzy = true,
+					override_generic_sorter = true,
+					override_file_sorter = true,
+					case_mode = "smart_case",
+				},
+				live_grep_args = {
+					mappings = {
+						i = {
+							["<C-a>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+						},
 					},
 				},
 			},
-		},
-	})
+		}
+	end,
+}
+
+function M.config(spec, opts)
+	local telescope = require(spec.main)
+	telescope.setup(opts)
 
 	telescope.load_extension("fzf")
 	telescope.load_extension("live_grep_args")

@@ -1,6 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
+vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.cursorline = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -30,3 +31,5 @@ require("lazy").setup("plugins", {
 		lazy = true,
 	},
 })
+
+vim.cmd("colorscheme rosebones")

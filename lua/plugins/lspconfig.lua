@@ -20,13 +20,14 @@ local M = {
 	},
 	dependencies = {
 		"folke/neodev.nvim",
+		"folke/which-key.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"nvim-treesitter/nvim-treesitter",
 	},
 	event = "BufReadPost",
 }
 
-function M.config()
+function M.config(spec, opts)
 	local lsp = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -40,10 +41,30 @@ function M.config()
 		settings = {
 			Lua = {
 				completion = {
-					callSnippet = "Replace"
-				}
-			}
-		}
+					callSnippet = "Replace",
+				},
+			},
+		},
+	})
+
+	require("which-key").register({
+		g = {
+			name = "🏃 Go to...",
+			d = {
+				function()
+					vim.lsp.buf.definition()
+					vim.cmd.normal("zz")
+				end,
+				"⚙️  Definition",
+			},
+			r = {
+				function()
+					vim.lsp.buf.references()
+					vim.cmd.normal("zz")
+				end,
+				"🔗 References",
+			},
+		},
 	})
 end
 
