@@ -1,40 +1,44 @@
 local M = {
 	"mhartington/formatter.nvim",
-	cmd = {
-		"Format",
-		"FormatLock",
-		"FormatWrite",
-		"FormatWriteLock",
-	},
+	event = { "VeryLazy" },
 	main = "formatter",
+	opts = function()
+		return {
+			filetype = {
+				eruby = {
+					require("formatter.filetypes.eruby").erbformatter,
+				},
+				lua = {
+					require("formatter.filetypes.lua").stylua,
+				},
+				ruby = {
+					require("formatter.filetypes.ruby").rubocop,
+					function()
+						return {
+							"--auto-correct",
+						}
+					end,
+				},
+				typescript = {
+					require("formatter.filetypes.typescript").prettier,
+				},
+				typescriptreact = {
+					require("formatter.filetypes.typescriptreact").prettier,
+				},
+				yaml = {
+					require("formatter.filetypes.yaml").prettierd,
+				},
+				["*"] = {
+					require("formatter.filetypes.any").remove_trailing_whitespace,
+				},
+			},
+			logging = true,
+		}
+	end,
 }
 
-function M.config(spec, _)
-	require(spec.main).setup({
-		filetype = {
-			lua = {
-				require("formatter.filetypes.lua").stylua,
-			},
-			ruby = {
-				require("formatter.filetypes.ruby").rubocop,
-				function()
-					return {
-						"--auto-correct",
-					}
-				end,
-			},
-			typescript = {
-				require("formatter.filetypes.typescript").prettierd,
-			},
-			typescriptreact = {
-				require("formatter.filetypes.typescriptreact").prettierd,
-			},
-			yaml = {
-				require("formatter.filetypes.yaml").prettierd,
-			},
-		},
-		logging = true,
-	})
+function M.config(spec, opts)
+	require(spec.main).setup(opts)
 
 	vim.api.nvim_create_autocmd("BufWritePost", {
 		command = ":FormatWrite",

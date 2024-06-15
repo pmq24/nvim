@@ -32,4 +32,4 @@ require("lazy").setup("plugins", {
 	},
 })
 
-vim.cmd("colorscheme rosebones")
+vim.cmd("colorscheme everforest")

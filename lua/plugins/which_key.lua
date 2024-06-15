@@ -25,6 +25,29 @@ local KEY_MAPPINGS = {
 		"<cmd>noh<CR>",
 		"Clear highlights",
 	},
+	K = {
+		function()
+			vim.lsp.buf.hover()
+		end,
+		"Hover",
+	},
+	m = {
+		function()
+			require("actions-preview").code_actions()
+		end,
+		"Code action",
+	},
+	q = {
+		function()
+			local current_buffer_is_a_file = vim.bo.buftype == ""
+
+			if current_buffer_is_a_file then
+				vim.cmd("write")
+			end
+			vim.cmd("bdelete")
+		end,
+		"󰅖 Quit the current buffer",
+	},
 	t = {
 		name = "  Telescope",
 		b = {
@@ -58,10 +81,11 @@ local KEY_MAPPINGS = {
 	},
 	["<leader>"] = {
 		d = {
-			function()
-				vim.diagnostic.setloclist()
-			end,
-			" Diagnostics",
+			name = "Debug",
+			b = {
+				"<cmd>DapToggleBreakpoint<CR>",
+				"Toggle breakpoint",
+			},
 		},
 		g = {
 			name = "Git",
@@ -70,44 +94,19 @@ local KEY_MAPPINGS = {
 				"Blame line",
 			},
 		},
-		q = {
-			function()
-				local current_buffer_is_a_file = vim.bo.buftype == ""
-
-				if current_buffer_is_a_file then
-					vim.cmd("write")
-				end
-				vim.cmd("bdelete")
-			end,
-			"󰅖 Quit the current buffer",
-		},
 		v = {
 			name = "Open view...",
+			d = {
+				function()
+					require("dapui").toggle()
+				end,
+				"Debugger",
+			},
 			g = {
 				"<cmd>LazyGit<cr>",
 				"Git (LazyGit)",
 			},
 		},
-	},
-	F = {
-		"<Plug>(leap-backward)",
-		"Leap backward",
-	},
-	K = {
-		function()
-			vim.lsp.buf.hover()
-		end,
-		"Hover",
-	},
-	f = {
-		"<Plug>(leap-forward)",
-		"Leap forward",
-	},
-	m = {
-		function()
-			require("actions-preview").code_actions()
-		end,
-		"Code action",
 	},
 }
 

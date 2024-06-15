@@ -4,11 +4,12 @@ local M = {
 	dependencies = {
 		"williamboman/mason.nvim",
 	},
-	lazy = false,
 	main = "mason-tool-installer",
+	lazy = false,
 	opts = {
 		ensure_installed = {
 			"dockerfile-language-server",
+			"erb-formatter",
 			"eslint-lsp",
 			"js-debug-adapter",
 			"json-lsp",

@@ -4,6 +4,7 @@ local M = {
 		"rktjmp/lush.nvim",
 	},
 	event = "VeryLazy",
+	name = "(Colorscheme) Zenbones",
 }
 
 return M

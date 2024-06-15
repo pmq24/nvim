@@ -46,26 +46,6 @@ function M.config(spec, opts)
 			},
 		},
 	})
-
-	require("which-key").register({
-		g = {
-			name = "🏃 Go to...",
-			d = {
-				function()
-					vim.lsp.buf.definition()
-					vim.cmd.normal("zz")
-				end,
-				"⚙️  Definition",
-			},
-			r = {
-				function()
-					vim.lsp.buf.references()
-					vim.cmd.normal("zz")
-				end,
-				"🔗 References",
-			},
-		},
-	})
 end
 
 return M

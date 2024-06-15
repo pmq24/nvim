@@ -2,7 +2,7 @@ local M = {
 	"aznhe21/actions-preview.nvim",
 	event = { "BufReadPost" },
 	main = "actions-preview",
-	opts = {}
+	opts = {},
 }
 
 return M

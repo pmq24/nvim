@@ -3,11 +3,15 @@ local M = {
 	dependencies = {
 		"tpope/vim-repeat",
 	},
+	-- Lazy loading is redundant, as Leap lazy loads itself.
+	-- https://github.com/ggandor/leap.nvim#installation
 	lazy = false,
 	main = "leap",
-	opts = {
-		highlight_unlabeled_phase_one_targets = true
-	}
+	opts = {},
 }
+
+function M.init()
+	vim.keymap.set({ "n", "v" }, "f", "<PLug>(leap)", { desc = "Leap" })
+end
 
 return M

@@ -3,6 +3,7 @@ local M = {
 	branch = "0.1.x",
 	cmd = { "Telescope" },
 	dependencies = {
+		"folke/which-key.nvim",
 		"neovim/nvim-lspconfig",
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope-fzf-native.nvim",
@@ -12,6 +13,7 @@ local M = {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	main = "telescope",
+	keys = { "<A-f>", "<A-w>" },
 	opts = function()
 		return {
 			defaults = {
@@ -20,7 +22,7 @@ local M = {
 				},
 				layout_strategy = "vertical",
 				prompt_prefix = "󰌌 ",
-				selection_caret = " "
+				selection_caret = " ",
 			},
 			extensions = {
 				fzf = {
@@ -37,6 +39,11 @@ local M = {
 					},
 				},
 			},
+			pickers = {
+				find_files = {
+					hidden = true,
+				},
+			},
 		}
 	end,
 }
@@ -48,6 +55,24 @@ function M.config(spec, opts)
 	telescope.load_extension("fzf")
 	telescope.load_extension("live_grep_args")
 	telescope.load_extension("ui-select")
+
+	local telescope_builtins = require("telescope.builtin")
+	local wk = require("which-key")
+
+	wk.register({
+		["<A-f>"] = {
+			function()
+				telescope_builtins.find_files()
+			end,
+			"Finding files",
+		},
+		["<A-w>"] = {
+			function()
+				telescope.extensions.live_grep_args.live_grep_args()
+			end,
+			"Finding words",
+		},
+	})
 end
 
 return M
