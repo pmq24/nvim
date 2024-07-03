@@ -1,8 +1,9 @@
 local M = {
 	"dgagn/diagflow.nvim",
 	event = { "BufReadPost" },
+	main = "diagflow",
 	opts = {
-		max_width = 30,
+		max_width = 60,
 		padding_top = 5,
 		padding_right = 2,
 		placement = "top",

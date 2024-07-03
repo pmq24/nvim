@@ -48,37 +48,6 @@ local KEY_MAPPINGS = {
 		end,
 		"󰅖 Quit the current buffer",
 	},
-	t = {
-		name = "  Telescope",
-		b = {
-			"<cmd>Telescope buffers<CR>",
-			"󱁻  Buffers",
-		},
-		c = {
-			function()
-				require("telescope.builtin").colorscheme()
-			end,
-			"  Colorschemes",
-		},
-		d = {
-			"<cmd>Telescope lsp_definitions<CR>",
-			"Definitions",
-		},
-		f = {
-			"<cmd>Telescope find_files<CR>",
-			"󰈔  Files",
-		},
-		r = {
-			"<cmd>Telescope lsp_references<CR>",
-			"References",
-		},
-		w = {
-			function()
-				require("telescope").extensions.live_grep_args.live_grep_args()
-			end,
-			"󰬴  Words",
-		},
-	},
 	["<leader>"] = {
 		d = {
 			name = "Debug",

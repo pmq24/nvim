@@ -5,6 +5,9 @@ local M = {
 	opts = function()
 		return {
 			filetype = {
+				css = {
+					require("formatter.filetypes.css").prettier,
+				},
 				eruby = {
 					require("formatter.filetypes.eruby").erbformatter,
 				},

@@ -7,6 +7,7 @@ local LANGUAGES_TO_INSTALL = {
 	"javascript",
 	"json",
 	"lua",
+	"regex",
 	"ruby",
 	"typescript",
 	"yaml",

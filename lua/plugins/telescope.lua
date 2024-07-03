@@ -60,11 +60,23 @@ function M.config(spec, opts)
 	local wk = require("which-key")
 
 	wk.register({
+		["<A-d>"] = {
+			"<cmd>Telescope lsp_definitions<CR>",
+			"Finding definitions",
+		},
+		["<A-S-d>"] = {
+			"<cmd>Telescope lsp_type_definitions<CR>",
+			"Finding type definitions",
+		},
 		["<A-f>"] = {
 			function()
 				telescope_builtins.find_files()
 			end,
 			"Finding files",
+		},
+		["<A-r>"] = {
+			"<cmd>Telescope lsp_references<CR>",
+			"Finding references",
 		},
 		["<A-w>"] = {
 			function()

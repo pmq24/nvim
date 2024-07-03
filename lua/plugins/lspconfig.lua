@@ -2,6 +2,7 @@
 
 local LANGUAGE_SERVERS = {
 	"dockerls",
+	"jsonls",
 	"lua_ls",
 	"rubocop",
 	"solargraph",
@@ -27,7 +28,7 @@ local M = {
 	event = "BufReadPost",
 }
 
-function M.config(spec, opts)
+function M.config()
 	local lsp = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 

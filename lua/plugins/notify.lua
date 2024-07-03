@@ -3,10 +3,10 @@ local M = {
 	lazy = false,
 	main = "notify",
 	opts = {
-		max_width = 100,
+		max_width = 50,
 		render = "wrapped-compact",
 		top_down = false,
-	}
+	},
 }
 
 function M.config(plugin_spec, opts)
