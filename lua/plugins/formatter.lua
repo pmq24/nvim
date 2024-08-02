@@ -11,6 +11,9 @@ local M = {
 				eruby = {
 					require("formatter.filetypes.eruby").erbformatter,
 				},
+				javascript = {
+					require("formatter.filetypes.javascript").prettier,
+				},
 				lua = {
 					require("formatter.filetypes.lua").stylua,
 				},
@@ -35,7 +38,7 @@ local M = {
 					require("formatter.filetypes.any").remove_trailing_whitespace,
 				},
 			},
-			logging = true,
+			logging = false,
 		}
 	end,
 }

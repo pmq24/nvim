@@ -6,6 +6,7 @@ local LANGUAGE_SERVERS = {
 	"lua_ls",
 	"rubocop",
 	"solargraph",
+	"tailwindcss",
 	"tsserver",
 	"yamlls",
 }
@@ -45,6 +46,16 @@ function M.config()
 					callSnippet = "Replace",
 				},
 			},
+		},
+	})
+
+	require("helpers.register_which_key").add({
+		{
+			"K",
+			desc = "(LSP) Hover",
+			function()
+				vim.lsp.buf.hover()
+			end,
 		},
 	})
 end

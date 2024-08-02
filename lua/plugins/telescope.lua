@@ -51,38 +51,54 @@ local M = {
 function M.config(spec, opts)
 	local telescope = require(spec.main)
 	telescope.setup(opts)
-
 	telescope.load_extension("fzf")
 	telescope.load_extension("live_grep_args")
 	telescope.load_extension("ui-select")
 
 	local telescope_builtins = require("telescope.builtin")
-	local wk = require("which-key")
 
-	wk.register({
-		["<A-d>"] = {
-			"<cmd>Telescope lsp_definitions<CR>",
-			"Finding definitions",
+	require("helpers.register_which_key").add({
+		{
+			desc = "Telescope: Buffers",
+			"<A-b>",
+			function()
+				vim.cmd("Telescope buffers")
+			end,
 		},
-		["<A-S-d>"] = {
-			"<cmd>Telescope lsp_type_definitions<CR>",
-			"Finding type definitions",
+		{
+			"<A-d>",
+			desc = "Telescope: Definitions",
+			function()
+				vim.cmd("Telescope lsp_definitions")
+			end,
 		},
-		["<A-f>"] = {
+		{
+			"<A-S-d>",
+			desc = "Telescope: Type Definitions",
+			function()
+				vim.cmd("Telescope lsp_type_definitions")
+			end,
+		},
+		{
+			"<A-f>",
+			desc = "Telescope: Files",
 			function()
 				telescope_builtins.find_files()
 			end,
-			"Finding files",
 		},
-		["<A-r>"] = {
-			"<cmd>Telescope lsp_references<CR>",
-			"Finding references",
+		{
+			"<A-r>",
+			desc = "Telescope: References",
+			function()
+				vim.cmd("Telescope lsp_references")
+			end,
 		},
-		["<A-w>"] = {
+		{
+			"<A-w>",
+			desc = "Telescope: Grep",
 			function()
 				telescope.extensions.live_grep_args.live_grep_args()
 			end,
-			"Finding words",
 		},
 	})
 end

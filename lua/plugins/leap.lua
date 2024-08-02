@@ -3,7 +3,7 @@ local M = {
 	dependencies = {
 		"tpope/vim-repeat",
 	},
-	-- Lazy loading is redundant, as Leap lazy loads itself.
+	-- Lazy loading is redundant, as Leap lazily loads itself.
 	-- https://github.com/ggandor/leap.nvim#installation
 	lazy = false,
 	main = "leap",
