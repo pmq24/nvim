@@ -41,6 +41,14 @@ function M.config(spec, opts)
 			end,
 		},
 		{
+			"<leader>pf",
+			desc = "Copy file path to clipboard",
+			function()
+				local filepath = vim.fn.expand("%")
+				vim.fn.setreg("+", filepath)
+			end,
+		},
+		{
 			"q",
 			desc = "󰅖 Quit the current buffer",
 			function()

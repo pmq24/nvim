@@ -4,12 +4,16 @@ local LANGUAGES_TO_INSTALL = {
 	"bash",
 	"dockerfile",
 	"gleam",
+	"go",
+	"gomod",
+	"gosum",
 	"javascript",
 	"json",
 	"lua",
 	"regex",
 	"ruby",
 	"typescript",
+	"tsx",
 	"yaml",
 }
 

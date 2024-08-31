@@ -9,7 +9,6 @@ vim.opt.shiftwidth = 2
 vim.opt.termguicolors = true
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.wo.wrap = false
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -32,4 +31,4 @@ require("lazy").setup("plugins", {
 	},
 })
 
-vim.cmd("colorscheme everforest")
+vim.cmd.colorscheme("catppuccin")

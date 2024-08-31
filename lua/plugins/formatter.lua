@@ -11,11 +11,20 @@ local M = {
 				eruby = {
 					require("formatter.filetypes.eruby").erbformatter,
 				},
+				go = {
+					require("formatter.filetypes.go").gofmt,
+				},
 				javascript = {
+					require("formatter.filetypes.javascript").prettier,
+				},
+				javascriptreact = {
 					require("formatter.filetypes.javascript").prettier,
 				},
 				lua = {
 					require("formatter.filetypes.lua").stylua,
+				},
+				markdown = {
+					require("formatter.filetypes.javascript").prettier,
 				},
 				ruby = {
 					require("formatter.filetypes.ruby").rubocop,

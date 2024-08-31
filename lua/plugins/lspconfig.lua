@@ -2,6 +2,7 @@
 
 local LANGUAGE_SERVERS = {
 	"dockerls",
+	"gopls",
 	"jsonls",
 	"lua_ls",
 	"rubocop",

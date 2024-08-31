@@ -2,7 +2,9 @@ local M = {
 	"echasnovski/mini.pairs",
 	config = true,
 	event = "BufReadPost",
-	opts = {},
+	opts = {
+		mappings = {},
+	},
 }
 
 return M

@@ -11,6 +11,7 @@ local M = {
 			"dockerfile-language-server",
 			"erb-formatter",
 			"eslint-lsp",
+			"gopls",
 			"json-lsp",
 			"html-lsp",
 			"lua-language-server",

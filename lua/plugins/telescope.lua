@@ -39,11 +39,6 @@ local M = {
 					},
 				},
 			},
-			pickers = {
-				find_files = {
-					hidden = true,
-				},
-			},
 		}
 	end,
 }
