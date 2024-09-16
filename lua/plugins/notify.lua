@@ -4,7 +4,6 @@ local M = {
 	main = "notify",
 	opts = {
 		max_width = 50,
-		render = "wrapped-compact",
 		top_down = false,
 	},
 }

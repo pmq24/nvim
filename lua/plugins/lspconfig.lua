@@ -8,7 +8,7 @@ local LANGUAGE_SERVERS = {
 	"rubocop",
 	"solargraph",
 	"tailwindcss",
-	"tsserver",
+	"ts_ls",
 	"yamlls",
 }
 
