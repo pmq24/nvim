@@ -6,7 +6,7 @@ local LANGUAGE_SERVERS = {
 	"jsonls",
 	"lua_ls",
 	"rubocop",
-	"solargraph",
+	"ruby_lsp",
 	"tailwindcss",
 	"ts_ls",
 	"yamlls",

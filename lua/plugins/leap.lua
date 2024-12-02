@@ -7,9 +7,7 @@ local M = {
 	-- https://github.com/ggandor/leap.nvim#installation
 	lazy = false,
 	main = "leap",
-	opts = {
-
-	},
+	opts = {},
 }
 
 function M.init()

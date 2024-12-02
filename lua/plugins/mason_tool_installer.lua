@@ -20,6 +20,7 @@ local M = {
 			"tailwindcss-language-server",
 			"typescript-language-server",
 			"rubocop",
+			"ruby-lsp",
 			"yaml-language-server",
 		},
 		log_level = vim.log.levels.WARN,

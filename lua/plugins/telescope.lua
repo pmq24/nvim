@@ -13,7 +13,7 @@ local M = {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	main = "telescope",
-	keys = { "<A-f>", "<A-w>" },
+	keys = { "<A-b>", "<A-f>", "<A-w>" },
 	opts = function()
 		return {
 			defaults = {
@@ -52,50 +52,15 @@ function M.config(spec, opts)
 
 	local telescope_builtins = require("telescope.builtin")
 
-	require("helpers.register_which_key").add({
-		{
-			desc = "Telescope: Buffers",
-			"<A-b>",
-			function()
-				vim.cmd("Telescope buffers")
-			end,
-		},
-		{
-			"<A-d>",
-			desc = "Telescope: Definitions",
-			function()
-				vim.cmd("Telescope lsp_definitions")
-			end,
-		},
-		{
-			"<A-S-d>",
-			desc = "Telescope: Type Definitions",
-			function()
-				vim.cmd("Telescope lsp_type_definitions")
-			end,
-		},
-		{
-			"<A-f>",
-			desc = "Telescope: Files",
-			function()
-				telescope_builtins.find_files()
-			end,
-		},
-		{
-			"<A-r>",
-			desc = "Telescope: References",
-			function()
-				vim.cmd("Telescope lsp_references")
-			end,
-		},
-		{
-			"<A-w>",
-			desc = "Telescope: Grep",
-			function()
-				telescope.extensions.live_grep_args.live_grep_args()
-			end,
-		},
-	})
+	vim.keymap.set("n", "<A-b>", ":Telescope buffers<CR>", { desc = " Telescope: buffers" })
+	vim.keymap.set("n", "<A-c>", ":Telescope resume<CR>", { desc = " Telescope: continue previous search" })
+	vim.keymap.set("n", "<A-d>", ":Telescope lsp_definitions<CR>", { desc = " Telescope: definitions" })
+	vim.keymap.set("n", "<A-S-d>", ":Telescope lsp_definitions<CR>", { desc = " Telescope: type definitions" })
+	vim.keymap.set("n", "<A-f>", ":Telescope find_files<CR>", { desc = " Telescope: files" })
+	vim.keymap.set("n", "<A-r>", ":Telescope lsp_references<CR>", { desc = " Telescope: references" })
+	vim.keymap.set("n", "<A-w>", function()
+		telescope.extensions.live_grep_args.live_grep_args()
+	end, { desc = " Telescope: words" })
 end
 
 return M
