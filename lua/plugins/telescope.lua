@@ -13,7 +13,7 @@ local M = {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	main = "telescope",
-	keys = { "<A-b>", "<A-f>", "<A-w>" },
+	keys = { "<A-d>", "<A-b>", "<A-f>", "<A-w>" },
 	opts = function()
 		return {
 			defaults = {
@@ -49,8 +49,6 @@ function M.config(spec, opts)
 	telescope.load_extension("fzf")
 	telescope.load_extension("live_grep_args")
 	telescope.load_extension("ui-select")
-
-	local telescope_builtins = require("telescope.builtin")
 
 	vim.keymap.set("n", "<A-b>", ":Telescope buffers<CR>", { desc = " Telescope: buffers" })
 	vim.keymap.set("n", "<A-c>", ":Telescope resume<CR>", { desc = " Telescope: continue previous search" })
