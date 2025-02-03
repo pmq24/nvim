@@ -9,13 +9,27 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/nvim-cmp",
+		"onsails/lspkind.nvim",
+		"zbirenbaum/copilot-cmp",
 	},
 	event = "InsertEnter",
 	main = "cmp",
 	opts = function(spec)
 		local cmp = require(spec.main)
+		local lspkind = require("lspkind")
 
 		return {
+			formatting = {
+				format = lspkind.cmp_format({
+					mode = "symbol",
+					ellipsis_char = "...",
+					show_labelDetails = true,
+					symbol_map = {
+						Codeium = "󰫢",
+						Copilot = "",
+					},
+				}),
+			},
 			mapping = {
 				["<A-l>"] = function(fallback)
 					if cmp.visible() and cmp.get_selected_entry() == nil then
@@ -57,6 +71,9 @@ local M = {
 					end
 				end,
 			},
+			performance = {
+				max_view_entries = 10,
+			},
 			preselect = cmp.PreselectMode.None,
 			window = {
 				completion = cmp.config.window.bordered(),
@@ -68,9 +85,9 @@ local M = {
 				end,
 			},
 			sources = cmp.config.sources({
-				{ name = "codeium" },
+				{ max_item_count = 3, name = "codeium" },
 			}, {
-				{ name = "nvim_lsp" },
+				{ max_item_count = 5, name = "nvim_lsp" },
 			}, {
 				{ name = "buffer" },
 			}),

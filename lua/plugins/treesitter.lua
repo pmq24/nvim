@@ -4,9 +4,11 @@ local LANGUAGES_TO_INSTALL = {
 	"bash",
 	"dockerfile",
 	"gleam",
+	"glimmer",
 	"go",
 	"gomod",
 	"gosum",
+	"html",
 	"javascript",
 	"json",
 	"lua",
@@ -14,6 +16,7 @@ local LANGUAGES_TO_INSTALL = {
 	"ruby",
 	"typescript",
 	"tsx",
+	"vue",
 	"yaml",
 }
 
@@ -32,5 +35,13 @@ local M = {
 		},
 	},
 }
+
+function M.init()
+	vim.filetype.add({
+		extension = {
+			hbs = "html",
+		},
+	})
+end
 
 return M

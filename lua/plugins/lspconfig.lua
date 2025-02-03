@@ -3,12 +3,14 @@
 local LANGUAGE_SERVERS = {
 	"dockerls",
 	"gopls",
+	"html",
 	"jsonls",
 	"lua_ls",
 	"rubocop",
 	"ruby_lsp",
 	"tailwindcss",
 	"ts_ls",
+	"volar",
 	"yamlls",
 }
 
@@ -40,6 +42,8 @@ function M.config()
 		})
 	end
 
+	lsp.html.setup({})
+
 	lsp.lua_ls.setup({
 		settings = {
 			Lua = {
@@ -48,6 +52,20 @@ function M.config()
 				},
 			},
 		},
+	})
+
+	lsp.ts_ls.setup({
+		init_options = {
+			plugins = {
+				{
+					name = "@vue/typescript-plugin",
+					location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+						.. "/node_modules/@vue/language-server",
+					languages = { "vue" },
+				},
+			},
+		},
+		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 	})
 
 	require("helpers.register_which_key").add({

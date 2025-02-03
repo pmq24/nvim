@@ -18,11 +18,9 @@ local M = {
 		return {
 			defaults = {
 				file_ignore_patterns = {
-					"node_modules",
+					".git/",
 				},
 				layout_strategy = "vertical",
-				prompt_prefix = "󰌌 ",
-				selection_caret = " ",
 			},
 			extensions = {
 				fzf = {
@@ -37,6 +35,11 @@ local M = {
 							["<C-a>"] = require("telescope-live-grep-args.actions").quote_prompt(),
 						},
 					},
+				},
+			},
+			pickers = {
+				find_files = {
+					hidden = true,
 				},
 			},
 		}
@@ -55,7 +58,12 @@ function M.config(spec, opts)
 	vim.keymap.set("n", "<A-d>", ":Telescope lsp_definitions<CR>", { desc = " Telescope: definitions" })
 	vim.keymap.set("n", "<A-S-d>", ":Telescope lsp_definitions<CR>", { desc = " Telescope: type definitions" })
 	vim.keymap.set("n", "<A-f>", ":Telescope find_files<CR>", { desc = " Telescope: files" })
-	vim.keymap.set("n", "<A-r>", ":Telescope lsp_references<CR>", { desc = " Telescope: references" })
+	vim.keymap.set(
+		"n",
+		"<A-r>",
+		":Telescope lsp_references show_line=false<CR>",
+		{ desc = " Telescope: references" }
+	)
 	vim.keymap.set("n", "<A-w>", function()
 		telescope.extensions.live_grep_args.live_grep_args()
 	end, { desc = " Telescope: words" })

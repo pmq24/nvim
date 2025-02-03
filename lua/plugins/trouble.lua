@@ -7,7 +7,27 @@ local M = {
 		"TroubleToggle",
 	},
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = {},
+	opts = {
+		auto_close = true,
+		auto_open = true,
+		follow = true,
+		pinned = true,
+	},
 }
+
+function M.init()
+	vim.keymap.set(
+		"n",
+		"<leader>dc",
+		"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+		{ desc = "(Trouble) Toggle current buffer diagnostics" }
+	)
+	vim.keymap.set(
+		"n",
+		"<leader>da",
+		"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+		{ desc = "(Trouble) Toggle all buffers diagnostics" }
+	)
+end
 
 return M

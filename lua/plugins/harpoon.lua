@@ -14,7 +14,6 @@ function M.config(spec)
 	harpoon.setup()
 
 	require("helpers.register_which_key").add({
-
 		{
 			"<A-a>",
 			desc = "Harpoon: Add file",

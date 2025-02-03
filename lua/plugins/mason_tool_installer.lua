@@ -21,6 +21,7 @@ local M = {
 			"typescript-language-server",
 			"rubocop",
 			"ruby-lsp",
+			"vue-language-server",
 			"yaml-language-server",
 		},
 		log_level = vim.log.levels.WARN,

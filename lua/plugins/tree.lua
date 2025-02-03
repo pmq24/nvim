@@ -6,6 +6,10 @@ local M = {
 	},
 	main = "nvim-tree",
 	opts = {
+		filters = {
+			custom = { "^\\.git", "^node_modules" },
+			git_ignored = false,
+		},
 		git = {
 			enable = false,
 			ignore = false,

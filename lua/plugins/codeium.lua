@@ -1,6 +1,7 @@
 local M = {
 	"Exafunction/codeium.nvim",
-	event = { "BufReadPost" },
+	cmd = { "Codeium" },
+	event = "BufReadPost",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
