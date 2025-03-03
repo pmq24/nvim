@@ -32,11 +32,3 @@ require("lazy").setup("plugins", {
 })
 
 vim.cmd.colorscheme("catppuccin")
-
--- Temporary fix for tree-sitter not enabling highlighting when opening a file
-vim.api.nvim_create_autocmd("BufReadPost", {
-	pattern = "*", -- This runs for any file type
-	callback = function()
-		vim.cmd("TSBufEnable highlight")
-	end,
-})

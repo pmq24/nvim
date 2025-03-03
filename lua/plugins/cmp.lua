@@ -88,8 +88,6 @@ local M = {
 				{ max_item_count = 3, name = "codeium" },
 			}, {
 				{ max_item_count = 5, name = "nvim_lsp" },
-			}, {
-				{ name = "buffer" },
 			}),
 			view = {
 				docs = {

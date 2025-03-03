@@ -33,6 +33,7 @@ local M = {
 					mappings = {
 						i = {
 							["<C-a>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+							["<C-f>"] = require("telescope-live-grep-args.actions").to_fuzzy_refine,
 						},
 					},
 				},

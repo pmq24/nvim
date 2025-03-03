@@ -9,9 +9,7 @@ local M = {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		auto_close = true,
-		auto_open = true,
 		follow = true,
-		pinned = true,
 	},
 }
 
