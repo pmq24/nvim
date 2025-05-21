@@ -23,10 +23,12 @@ local LANGUAGES_TO_INSTALL = {
 local M = {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	enabled = false,
 	event = "BufReadPost",
 	main = "nvim-treesitter.configs",
 	opts = {
+		autotag = {
+			enabled = true,
+		},
 		ensure_installed = LANGUAGES_TO_INSTALL,
 		hightlight = {
 			enable = true,

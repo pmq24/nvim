@@ -10,7 +10,6 @@ local M = {
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/nvim-cmp",
 		"onsails/lspkind.nvim",
-		"zbirenbaum/copilot-cmp",
 	},
 	event = "InsertEnter",
 	main = "cmp",
@@ -26,7 +25,6 @@ local M = {
 					show_labelDetails = true,
 					symbol_map = {
 						Codeium = "󰫢",
-						Copilot = "",
 					},
 				}),
 			},

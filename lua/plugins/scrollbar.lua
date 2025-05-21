@@ -7,11 +7,6 @@ local M = {
 	event = { "BufReadPost" },
 	main = "scrollbar",
 	opts = {
-		marks = {
-			Cursor = {
-				text = "󰇀",
-			},
-		},
 		handlers = {
 			cursor = true,
 			diagnostic = true,

@@ -1,7 +1,7 @@
 local M = {
 	"windwp/nvim-ts-autotag",
-	config = true,
-	event = "BufReadPost",
+	lazy = false,
+	opts = {},
 }
 
 return M
