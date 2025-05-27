@@ -14,6 +14,7 @@ local M = {
 			"json-lsp",
 			"lua-language-server",
 			"prettier",
+			"ruby-lsp",
 			"stylua",
 			"tailwindcss-language-server",
 			"typescript-language-server",
