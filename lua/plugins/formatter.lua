@@ -55,10 +55,10 @@ local M = {
 function M.config(spec, opts)
 	require(spec.main).setup(opts)
 
-	vim.api.nvim_create_autocmd("BufWritePost", {
-		command = ":FormatWrite",
-		pattern = "*",
-	})
+	-- vim.api.nvim_create_autocmd("BufWritePost", {
+	-- 	command = ":FormatWrite",
+	-- 	pattern = "*",
+	-- })
 end
 
 return M

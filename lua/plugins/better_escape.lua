@@ -8,7 +8,7 @@ local M = {
 		mappings = {
 			i = {
 				z = {
-					z = "<Esc>",
+					x = "<Esc>",
 				},
 			},
 		},

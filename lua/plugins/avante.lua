@@ -1,17 +1,35 @@
+local CLAUDE_CONFIG = {
+	endpoint = "https://api.anthropic.com",
+	model = "claude-3-7-sonnet-20250219",
+	extra_request_body = {
+		temperature = 0,
+		max_tokens = 4096
+	} ,
+}
+
+local MISTRAL_CONFIG = {
+providers = {
+  mistral= {
+    __inherited_from = "openai",
+    api_key_name = "MISTRAL_API_KEY",
+    endpoint = "https://api.mistral.ai/v1/",
+    model = "devstral-small-2505",
+    extra_request_body = {
+      max_tokens = 4096, -- to avoid using max_completion_tokens
+    },
+  },
+},
+}
+
 local M = {
 	"yetone/avante.nvim",
 	event = "VeryLazy",
 	-- Never set this value to "*"! Never!
 	version = false,
 	opts = {
-		-- add any opts here
-		-- for example
-		provider = "claude",
-		claude = {
-			endpoint = "https://api.anthropic.com",
-			model = "claude-3-7-sonnet-20250219",
-			temperature = 0,
-			max_tokens = 4096,
+		providers = {
+			claude = CLAUDE_CONFIG,
+			mistral = MISTRAL_CONFIG
 		},
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

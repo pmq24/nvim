@@ -8,15 +8,14 @@ local M = {
 function M.config(spec, opts)
 	require(spec.main).setup(opts)
 
-	require("helpers.register_which_key").add({
-		{
-			"m",
-			desc = "Code action",
-			function()
-				require("actions-preview").code_actions()
-			end,
-		},
-	})
+	vim.keymap.set(
+		"n",
+		"<C-space>",
+		function()
+			require("actions-preview").code_actions()
+		end,
+		{ desc = "Code action" }
+	)
 end
 
 return M

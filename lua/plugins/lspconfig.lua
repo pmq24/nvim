@@ -47,8 +47,6 @@ function M.config()
 		})
 	end
 
-	lsp.html.setup({})
-
 	lsp.lua_ls.setup({
 		settings = {
 			Lua = {
@@ -74,15 +72,15 @@ function M.config()
 		filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 	})
 
-	require("helpers.register_which_key").add({
-		{
-			"K",
-			desc = "(LSP) Hover",
+
+	vim.keymap.set(
+		"n",
+		"K",
 			function()
 				vim.lsp.buf.hover()
 			end,
-		},
-	})
+		{ desc = "LSP: Hover" }
+	)
 end
 
 return M

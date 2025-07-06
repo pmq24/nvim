@@ -15,6 +15,8 @@ local M = {
 	main = "telescope",
 	keys = { "<A-d>", "<A-b>", "<A-f>", "<A-w>" },
 	opts = function()
+		local lga = require("telescope-live-grep-args.actions")
+
 		return {
 			defaults = {
 				file_ignore_patterns = {
@@ -32,8 +34,10 @@ local M = {
 				live_grep_args = {
 					mappings = {
 						i = {
-							["<C-a>"] = require("telescope-live-grep-args.actions").quote_prompt(),
-							["<C-f>"] = require("telescope-live-grep-args.actions").to_fuzzy_refine,
+							["<C-q>"] = lga.quote_prompt(),
+							["<C-t>"] = lga.quote_prompt({ postfix = " -t" }),
+							["<C-T>"] = lga.quote_prompt({ postfix = " -T" }),
+							["<C-i>"] = lga.quote_prompt({ postfix = " --iglob " }),
 						},
 					},
 				},

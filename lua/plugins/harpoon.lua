@@ -12,51 +12,14 @@ function M.config(spec)
 	local harpoon = require(spec.main)
 
 	harpoon.setup()
+	
+	vim.keymap.set("n", "<C-a>", function() harpoon:list():add() end, { desc = "Harpoon: Add file" })
+	vim.keymap.set("n", "<C-m>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon: Menu" })
 
-	require("helpers.register_which_key").add({
-		{
-			"<A-a>",
-			desc = "Harpoon: Add file",
-			function()
-				harpoon:list():add()
-			end,
-		},
-		{
-			"<A-h>",
-			desc = "Harpoon: H File",
-			function()
-				harpoon:list():select(1)
-			end,
-		},
-		{
-			"<A-j>",
-			desc = "Harpoon: J File",
-			function()
-				harpoon:list():select(2)
-			end,
-		},
-		{
-			"<A-k>",
-			desc = "Harpoon: K File",
-			function()
-				harpoon:list():select(3)
-			end,
-		},
-		{
-			"<A-l>",
-			desc = "Harpoon: L File",
-			function()
-				harpoon:list():select(4)
-			end,
-		},
-		{
-			"<A-m>",
-			desc = "Harpoon: Menu",
-			function()
-				harpoon.ui:toggle_quick_menu(harpoon:list())
-			end,
-		},
-	})
+	vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end, { desc = "Harpoon: H File" })
+	vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end, { desc = "Harpoon: J File" })
+	vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end, { desc = "Harpoon: K File" })
+	vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end, { desc = "Harpoon: L File" })
 end
 
 return M

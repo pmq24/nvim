@@ -1,9 +1,6 @@
 local M = {
 	"nvim-tree/nvim-tree.lua",
 	event = "VeryLazy",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
 	main = "nvim-tree",
 	opts = {
 		filters = {
@@ -19,6 +16,7 @@ local M = {
 			sorter = "case_sensitive",
 		},
 		view = {
+			relativenumber = true,
 			width = 40,
 		},
 		renderer = {
@@ -45,9 +43,9 @@ local M = {
 function M.config(spec, opts)
 	require(spec.main).setup(opts)
 
-	require("helpers.register_which_key").add({
-		{
-			"<C-n>",
+	vim.keymap.set(
+		"n",
+		"<C-n>",
 			function()
 				local nvimtree_api = require("nvim-tree.api").tree
 
@@ -57,9 +55,8 @@ function M.config(spec, opts)
 					nvimtree_api.close()
 				end
 			end,
-			desc = "Toggle File Explorer",
-		},
-	})
+		{ desc = "NvimTree: Toggle" }
+	)
 end
 
 return M

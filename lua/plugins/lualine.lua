@@ -1,8 +1,5 @@
 local M = {
 	"nvim-lualine/lualine.nvim",
-	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-	},
 	event = { "VeryLazy" },
 	main = "lualine",
 	opts = {
@@ -12,7 +9,7 @@ local M = {
 			lualine_c = {},
 			lualine_x = {},
 			lualine_y = {},
-			lualine_z = { "location" },
+			lualine_z = {},
 		},
 	},
 }
